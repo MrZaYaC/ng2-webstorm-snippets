@@ -17,6 +17,8 @@ webshtormXML += '</templateSet>';
 
 fs.writeFileSync(`${__dirname}/../dist/ng2-templates.xml`, webshtormXML, 'utf8');
 
+console.log('\x1b[32m', "- created", '\x1b[0m', "/dist/ng2-templates.xml");
+
 function convert(vsTemplate, type) {
   const regex = /\$\{([^\}]+)\}/g;
   let webstormXml = '';

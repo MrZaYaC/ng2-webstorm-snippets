@@ -4,13 +4,18 @@
   "description": "Angular 2 TypeScript snippets for WebStorm based on John Papa snippets for Visual Code",
   "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm install"
   },
   "author": "Denis Zaichenko",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git@github.com:MrZaYaC/ng2-webstorm-snippets.git"
+  },
+  "engines" : {
+    "node" : ">=4.0.0 <6.0.0"
   },
   "dependencies": {
     "Angular2": "github:johnpapa/vscode-angular2-snippets",
