@@ -1,0 +1,146 @@
+<templateSet group="Angular2 TypeScript Live Templates">
+    <template name="ng2-component" value="import { Component, OnInit } from &#39;@angular/core&#39;;&#10;&#10;@Component({&#10;	moduleId: module.id,&#10;	selector: &#39;$selector$&#39;,&#10;	templateUrl: &#39;$name$.component.html&#39;&#10;})&#10;export class $ComponentName$Component implements OnInit {&#10;	constructor() { }&#10;&#10;	ngOnInit() { }&#10;$END$&#10;}" description="Angular 2 component snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="selector" defaultValue="selector" alwaysStopAt="true"/>
+      <variable name="name" defaultValue="name" alwaysStopAt="true"/>
+      <variable name="ComponentName" defaultValue="ComponentName" alwaysStopAt="true"/>
+      <context>
+         <option name="TypeScript" value="true"/>
+       </context>
+    </template>
+  
+    <template name="ng2-service" value="import { Injectable } from &#39;@angular/core&#39;;&#10;&#10;@Injectable()&#10;export class $ServiceName$Service {&#10;$END$&#10;	constructor() { }&#10;&#10;}" description="Angular 2 service snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="ServiceName" defaultValue="ServiceName" alwaysStopAt="true"/>
+      <context>
+         <option name="TypeScript" value="true"/>
+       </context>
+    </template>
+  
+    <template name="ng2-pipe" value="import { Pipe, PipeTransform } from &#39;@angular/core&#39;;&#10;&#10;@Pipe({&#10;	name: &#39;$name$&#39;&#10;})&#10;&#10;export class $PipeName$Pipe implements PipeTransform {&#10;	transform(value: any, args: any[]): any {&#10;		$END$&#10;	}&#10;}" description="Angular 2 pipe snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="name" defaultValue="name" alwaysStopAt="true"/>
+      <variable name="PipeName" defaultValue="PipeName" alwaysStopAt="true"/>
+      <context>
+         <option name="TypeScript" value="true"/>
+       </context>
+    </template>
+  
+    <template name="ng2-routes" value="@Routes([&#10;	{ path: &#39;/$path$&#39;, component: $Component$ }$END$&#10;])" description="Angular 2 route config snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="path" defaultValue="path" alwaysStopAt="true"/>
+      <variable name="Component" defaultValue="Component" alwaysStopAt="true"/>
+      <context>
+         <option name="TypeScript" value="true"/>
+       </context>
+    </template>
+  
+    <template name="ng2-route-path" value="{ path: &#39;/$path$&#39;, component: $Component$ }$END$" description="Angular 2 route path snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="path" defaultValue="path" alwaysStopAt="true"/>
+      <variable name="Component" defaultValue="Component" alwaysStopAt="true"/>
+      <context>
+         <option name="TypeScript" value="true"/>
+       </context>
+    </template>
+  
+    <template name="ng2-http-get" value="return this.http.get(&#39;$url$&#39;)&#10;	.map((res: Response) =&gt; res.json()$END$$);" description="Angular 2 Http.get snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="url" defaultValue="url" alwaysStopAt="true"/>
+      <variable name="0" defaultValue="0" alwaysStopAt="true"/>
+      <context>
+         <option name="TypeScript" value="true"/>
+       </context>
+    </template>
+  
+    <template name="ng2-subscribe" value="this.$service$.$function$&#10;	.subscribe($arg$ =&gt; this.$property$ = $arg$);&#10;$END$" description="Angular 2 observable subscribe snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="service" defaultValue="service" alwaysStopAt="true"/>
+      <variable name="function" defaultValue="function" alwaysStopAt="true"/>
+      <variable name="arg" defaultValue="arg" alwaysStopAt="true"/>
+      <variable name="property" defaultValue="property" alwaysStopAt="true"/>
+      <variable name="arg" defaultValue="arg" alwaysStopAt="true"/>
+      <context>
+         <option name="TypeScript" value="true"/>
+       </context>
+    </template>
+  
+    <template name="ng2-bootstrap" value="import { enableProdMode } from &#39;@angular/core&#39;;&#10;import { bootstrap } from &#39;@angular/platform-browser-dynamic&#39;;&#10;&#10;import { $AppComponent$ } from &#39;./$name$.component&#39;;&#10;&#10;// enableProdMode();&#10;&#10;bootstrap($AppComponent$)&#10;	.then(success =&gt; console.log(`Bootstrap success`))&#10;	.catch(error =&gt; console.log(error));&#10;$END$" description="Angular 2 bootstrap snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="AppComponent" defaultValue="AppComponent" alwaysStopAt="true"/>
+      <variable name="name" defaultValue="name" alwaysStopAt="true"/>
+      <variable name="AppComponent" defaultValue="AppComponent" alwaysStopAt="true"/>
+      <context>
+         <option name="TypeScript" value="true"/>
+       </context>
+    </template>
+  
+    <template name="ng2-component-root" value="import { Component } from &#39;@angular/core&#39;;&#10;import { HTTP_PROVIDERS } from &#39;@angular/http&#39;;&#10;import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from &#39;@angular/router&#39;;&#10;import &#39;rxjs/Rx&#39;; // load the full rxjs&#10;&#10;@Component({&#10;	moduleId: module.id,&#10;	selector: &#39;$selector$&#39;,&#10;	templateUrl: &#39;$name$.component.html&#39;,&#10;	directives: [ROUTER_DIRECTIVES],&#10;	providers: [&#10;	  HTTP_PROVIDERS,&#10;	  ROUTER_PROVIDERS&#10;	]&#10;})&#10;@Routes([&#10;	$END$&#10;])&#10;export class AppComponent {}" description="Angular 2 App root component snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="selector" defaultValue="selector" alwaysStopAt="true"/>
+      <variable name="name" defaultValue="name" alwaysStopAt="true"/>
+      <context>
+         <option name="TypeScript" value="true"/>
+       </context>
+    </template>
+  
+    <template name="ng2-ngClass" value="[ngClass]=&quot;{$cssClass$: $expression$}&quot;" description="Angular 2 ngClass snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="cssClass" defaultValue="cssClass" alwaysStopAt="true"/>
+      <variable name="expression" defaultValue="expression" alwaysStopAt="true"/>
+      <context>
+          <option name="HTML_TEXT" value="true" />
+          <option name="HTML" value="true" />
+          <option name="JADE" value="true" />
+      </context>
+    </template>
+  
+    <template name="ng2-ngFor" value="*ngFor=&quot;let $item$ of $list$&quot;" description="Angular 2 *ngFor snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="item" defaultValue="item" alwaysStopAt="true"/>
+      <variable name="list" defaultValue="list" alwaysStopAt="true"/>
+      <context>
+          <option name="HTML_TEXT" value="true" />
+          <option name="HTML" value="true" />
+          <option name="JADE" value="true" />
+      </context>
+    </template>
+  
+    <template name="ng2-ngIf" value="*ngIf=&quot;$expression$&quot;" description="Angular 2 *ngIf snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="expression" defaultValue="expression" alwaysStopAt="true"/>
+      <context>
+          <option name="HTML_TEXT" value="true" />
+          <option name="HTML" value="true" />
+          <option name="JADE" value="true" />
+      </context>
+    </template>
+  
+    <template name="ng2-ngModel" value="[(ngModel)]=&quot;$binding$&quot;" description="Angular 2 ngModel snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="binding" defaultValue="binding" alwaysStopAt="true"/>
+      <context>
+          <option name="HTML_TEXT" value="true" />
+          <option name="HTML" value="true" />
+          <option name="JADE" value="true" />
+      </context>
+    </template>
+  
+    <template name="ng2-routerLink" value="[routerLink]=&quot;[&#39;$routeName$&#39;]&quot;" description="Angular 2 routerLink snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="routeName" defaultValue="routeName" alwaysStopAt="true"/>
+      <context>
+          <option name="HTML_TEXT" value="true" />
+          <option name="HTML" value="true" />
+          <option name="JADE" value="true" />
+      </context>
+    </template>
+  
+    <template name="ng2-ngStyle" value="[ngStyle]=&quot;{$style$: $expression$}&quot;" description="Angular 2 ngStyle snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="style" defaultValue="style" alwaysStopAt="true"/>
+      <variable name="expression" defaultValue="expression" alwaysStopAt="true"/>
+      <context>
+          <option name="HTML_TEXT" value="true" />
+          <option name="HTML" value="true" />
+          <option name="JADE" value="true" />
+      </context>
+    </template>
+  
+    <template name="ng2-ngSwitch" value="&lt;div [ngSwitch]=&quot;$conditionExpression$&quot;&gt;&#10;	&lt;div *ngSwitchWhen=&quot;$expression$&quot;&gt;$output$&lt;/div&gt;&#10;	&lt;div *ngSwitchDefault&gt;$output2$&lt;/div&gt;&#10;&lt;/div&gt;" description="Angular 2 ngSwitch snippet" toReformat="true" toShortenFQNames="true">
+      <variable name="conditionExpression" defaultValue="conditionExpression" alwaysStopAt="true"/>
+      <variable name="expression" defaultValue="expression" alwaysStopAt="true"/>
+      <variable name="output" defaultValue="output" alwaysStopAt="true"/>
+      <variable name="output2" defaultValue="output2" alwaysStopAt="true"/>
+      <context>
+          <option name="HTML_TEXT" value="true" />
+          <option name="HTML" value="true" />
+          <option name="JADE" value="true" />
+      </context>
+    </template>
+  </templateSet>
