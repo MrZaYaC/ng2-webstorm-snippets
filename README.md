@@ -5,7 +5,7 @@ This script convert Angular 2 for TypeScript and HTML snippets from Visual Studi
 
 ##### Installing the templates
 
-- Clone repo or download [ng2-templates.xml](https://github.com/MrZaYaC/ng2-webstorm-snippets.git/blob/master/dist/ng2-templates.xml)
+- Clone repo or download [ng2-templates.xml](https://github.com/MrZaYaC/ng2-webstorm-snippets/blob/master/dist/ng2-templates.xml)
 - Place the XML file in your [templates folder](https://www.jetbrains.com/webstorm/help/project-and-ide-settings.html)
 : On OSX that would be ~/Library/Preferences/WebStorm{Version}/templates
 
