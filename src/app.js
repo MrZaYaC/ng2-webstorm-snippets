@@ -42,11 +42,14 @@ function convert(vsTemplate, type) {
     let vars = [];
     let body = [];
     let varsXml = [];
+    let index = 0;
 
     for (let line of vsTemplate[key].body) {
       if (regex.test(line)) {
         line = line.replace(regex, (match, p1) => {
-          vars.push(p1);
+          if (vars.indexOf(p1) === -1) {
+            vars.push(p1);
+          }
           return `$${p1}$`;
         });
       }
@@ -54,6 +57,7 @@ function convert(vsTemplate, type) {
       line = line.replace('${0}', '$END$');
       line = escape(line);
       body.push(line);
+      index++;
     }
     if (vars.length) {
       for (const name of vars) {
