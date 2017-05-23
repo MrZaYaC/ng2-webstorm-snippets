@@ -20,7 +20,8 @@ fs.writeFileSync(`${__dirname}/../dist/ng2-templates.xml`, webshtormXML, 'utf8')
 console.log('\x1b[32m', "- created", '\x1b[0m', "/dist/ng2-templates.xml");
 
 function convert(vsTemplate, type) {
-  const regex = /\$\{([^\}|^0]+)\}/g;
+  const variableRegexp = /\$\{([^\}|^0]+)\}/g;
+  const caretRegexp = /(\$[1-9])/g;
   let webstormXml = '';
   let context =
       `<context>
@@ -30,7 +31,6 @@ function convert(vsTemplate, type) {
   if (type === 'html') {
     context =
       `<context>
-          <option name="HTML_TEXT" value="true" />
           <option name="HTML" value="true" />
           <option name="JADE" value="true" />
       </context>`;
@@ -42,31 +42,41 @@ function convert(vsTemplate, type) {
     let vars = [];
     let body = [];
     let varsXml = [];
-    let index = 0;
 
     for (let line of vsTemplate[key].body) {
-      if (regex.test(line)) {
-        line = line.replace(regex, (match, p1) => {
-          if (vars.indexOf(p1) === -1) {
-            vars.push(p1);
+      if (variableRegexp.test(line)) {
+        line = line.replace(variableRegexp, (match, p1) => {
+          const name = p1.replace(/\d:/, '').replace('-', '');
+          const value = p1.replace(/\d:/, '');
+          if (!vars.filter(item => item.name === name).length) {
+            vars.push({name, value});
           }
-          return `$${p1}$`;
+          return `$${name}$`;
+        });
+      }
+      if (caretRegexp.test(line)) {
+        line = line.replace(caretRegexp, (match, p1) => {
+          const name = p1.replace(/\$([1-9])/, 'var$1');
+          const value = p1.replace(/\$([1-9])/, '');
+          if (!vars.filter(item => item.name === name).length) {
+            vars.push({name, value});
+          }
+          return `$${name}$`;
         });
       }
       line = line.replace('$0', '$END$');
       line = line.replace('${0}', '$END$');
       line = escape(line);
       body.push(line);
-      index++;
     }
     if (vars.length) {
-      for (const name of vars) {
-        varsXml.push(`<variable name="${name}" defaultValue="&quot;${name}&quot;" alwaysStopAt="true"/>`);
+      for (const item of vars) {
+        varsXml.push(`<variable name="${item.name}" defaultValue="&quot;${item.value}&quot;" alwaysStopAt="true"/>`);
       }
     }
 
     webstormXml += `
-    <template name="${vsTemplate[key].prefix}" value="${body.join('&#10;')}" description="${vsTemplate[key].description}" toReformat="true" toShortenFQNames="true">
+    <template name="${vsTemplate[key].prefix}" value="${body.join('&#10;')}" description="${escape(vsTemplate[key].description)}" toReformat="false" toShortenFQNames="true">
       ${varsXml.join("\n      ")}
       ${context}
     </template>

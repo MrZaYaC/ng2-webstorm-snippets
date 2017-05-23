@@ -1,6 +1,6 @@
 {
   "name": "ng2-webstorm-snippets",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Angular 2 TypeScript snippets for WebStorm based on John Papa snippets for Visual Code",
   "main": "src/app.js",
   "scripts": {
